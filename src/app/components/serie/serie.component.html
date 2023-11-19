@@ -1,0 +1,38 @@
+<div *ngIf="serieCargada" class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <img
+            [src]="serie?.imagen"
+            class="card-img-top"
+            [alt]="serie?.nombre"
+            style="max-width: 600px"
+          />
+          <div class="card-body text-center">
+            <br />
+            <h5 class="card-title">{{ serie?.nombre }}</h5>
+            <p class="card-text">IMBD: {{ serie?.puntuacion }}</p>
+            <div class="container">
+              <div class="row">
+                <div class="text-center">
+                  <br />
+                  <a
+                    [routerLink]="'/personajes/' + serie?.idSerie + '/' + serie?.nombre"
+                    class="btn btn-primary"
+                  >
+                    Ver Personajes
+                  </a>
+                  &nbsp;
+                  <a routerLink="/" class="btn btn-secondary">Volver</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!serieCargada">
+    Cargando...
+  </div>
+  

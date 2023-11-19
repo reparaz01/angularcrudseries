@@ -1,0 +1,24 @@
+  <!-- login.component.html -->
+  <div class="centered-container">
+    <br /><br />
+    <h1 class="text-center">Autorización de Acceso</h1>
+    <form (ngSubmit)="login()" class="text-center">
+      <label for="cajauser">Usuario:</label>
+      <div style="margin-top: 10px;"></div>
+      <input [(ngModel)]="usuario" type="text" class="form-control input-narrow mx-auto" id="cajauser" name="cajauser">
+      <div style="margin-top: 15px;"></div>
+      <label for="cajapassword">Password:</label>
+      <div style="margin-top: 10px;"></div>
+      <input [(ngModel)]="password" type="password" class="form-control input-narrow mx-auto" id="cajapassword" name="cajapassword">
+      <div style="margin-top: 35px;"></div>
+      <button type="submit" class="btn btn-outline-success lg">
+        Login
+      </button>
+    </form>
+
+    <div style="margin-top: 15px;"></div>
+    <!-- Mostrar mensaje de éxito o error -->
+    <h4 *ngIf="loginCorrecto" style="color: green; text-align: center;">Acceso Autorizado</h4>
+    <h4 *ngIf="loginIncorrecto" style="color: red; text-align: center;">Usuario o Contraseña incorrectos</h4>
+    
+</div>
