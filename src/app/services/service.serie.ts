@@ -32,9 +32,7 @@ export class ServiceSeries {
   }
 
   getSeries(): Observable<any> {
-    const headers = {
-      Authorization: 'bearer ' + environment.token,
-    };
+    const headers = new HttpHeaders().set('Authorization', 'bearer ' + environment.token);
     const request = 'api/Series';
     const url = environment.urlApi + request;
 
@@ -50,9 +48,7 @@ export class ServiceSeries {
   }
 
   getPersonajes(): Observable<any> {
-    const headers = {
-      Authorization: 'bearer ' + environment.token,
-    };
+    const headers = new HttpHeaders().set('Authorization', 'bearer ' + environment.token);
     const request = 'api/Personajes';
     const url = environment.urlApi + request;
 
@@ -77,9 +73,7 @@ export class ServiceSeries {
   }
 
   updatePersonaje(idPersonaje: number, idSerie: number): Observable<any> {
-    const headers = {
-      Authorization: 'bearer ' + environment.token,
-    };
+    const headers = new HttpHeaders().set('Authorization', 'bearer ' + environment.token);
     const request = "api/personajes/" +idPersonaje + "/" +idSerie;
     const url = environment.urlApi + request;
 
@@ -87,9 +81,7 @@ export class ServiceSeries {
   }
 
   deletePersonaje(id: number): Observable<any> {
-    const headers = {
-      Authorization: 'bearer ' + environment.token,
-    };
+    const headers = new HttpHeaders().set('Authorization', 'bearer ' + environment.token);
     const request = `api/personajes/${id}`;
     const url = environment.urlApi + request;
 

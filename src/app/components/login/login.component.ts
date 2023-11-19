@@ -1,5 +1,5 @@
 // login.component.ts
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ServiceSeries } from 'src/app/services/service.serie';
 import { environment } from 'src/environments/environment';
 
@@ -10,32 +10,45 @@ import { environment } from 'src/environments/environment';
   
 })
 export class LoginComponent {
-  public usuario: string = '';
-  public password: string = '';
+
+  @ViewChild('cajaUsername') cajaUsernameRef!: ElementRef;
+  @ViewChild('cajaPassword') cajaPasswordRef!: ElementRef;
+
+  public mensaje = '';
   public loginCorrecto: boolean = false;
   public loginIncorrecto: boolean = false;
 
-  constructor(private _serviceSeries: ServiceSeries) {}
+  constructor(
+    private serviceSeries: ServiceSeries,
+
+    ) {}
 
   login(): void {
-    this._serviceSeries.autorizarAcceso(this.usuario, this.password)
-      .subscribe(
-        () => {
-          console.log("Usuario:", this.usuario);
-          console.log("Password:", this.password);
-          console.log("TOKEN: " + environment.token);
 
-          this.loginCorrecto = true;
-          this.loginIncorrecto = false;
-        },
-        (error) => {
-          console.error("Error al autorizar acceso:", error);
-          console.log("Usuario:", this.usuario);
-          console.log("Password:", this.password);
-          console.log("TOKEN: " + environment.token);
-          this.loginCorrecto = false;
-          this.loginIncorrecto = true;
-        }
-      );
+    var username = this.cajaUsernameRef.nativeElement.value;
+    var password = this.cajaPasswordRef.nativeElement.value;
+
+    this.serviceSeries.autorizarAcceso(username,password).subscribe(
+      (data) => {
+
+        environment.token = data.response;
+        this.loginCorrecto = true;
+        this.loginIncorrecto = false;
+        console.log("Usuario:", username);
+        console.log("Password:", password);
+        console.log("TOKEN: " + environment.token);
+
+      },
+      (error) => {
+        console.error(error);
+        this.loginCorrecto = false;
+        this.loginIncorrecto = true;
+        console.log("Usuario:", username);
+        console.log("Password:", password);
+        console.log("TOKEN: " + environment.token);
+      }
+    );
   }
+
+
 }

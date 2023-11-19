@@ -1,24 +1,48 @@
-  <!-- login.component.html -->
-  <div class="centered-container">
-    <br /><br />
-    <h1 class="text-center">Autorización de Acceso</h1>
-    <form (ngSubmit)="login()" class="text-center">
-      <label for="cajauser">Usuario:</label>
-      <div style="margin-top: 10px;"></div>
-      <input [(ngModel)]="usuario" type="text" class="form-control input-narrow mx-auto" id="cajauser" name="cajauser">
-      <div style="margin-top: 15px;"></div>
-      <label for="cajapassword">Password:</label>
-      <div style="margin-top: 10px;"></div>
-      <input [(ngModel)]="password" type="password" class="form-control input-narrow mx-auto" id="cajapassword" name="cajapassword">
-      <div style="margin-top: 35px;"></div>
-      <button type="submit" class="btn btn-outline-success lg">
+<div class="centered-container">
+  <br /><br />
+  <h1 class="text-center">Autorización de Acceso</h1>
+  <form #insertForm="ngForm">
+    <div class="mb-3 text-center">
+      <label for="nombre" class="form-label">Usuario:</label>
+      <input
+        type="text"
+        class="form-control input-narrow mx-auto"
+        id="usuario"
+        name="usuario" 
+        #cajaUsername 
+      />
+    </div>
+
+    <div class="mb-3 text-center">
+      <label for="nombre" class="form-label">Contraseña:</label>
+      <input
+        type="password"
+        class="form-control input-narrow mx-auto"
+        id="password"
+        name="password" 
+        #cajaPassword
+      />
+    </div>
+
+    <div style="margin-top: 35px;"></div>
+
+
+    <div class="text-center">
+      <br />
+      <button (click)="login()" class="btn btn-primary">
         Login
       </button>
-    </form>
+      &nbsp;
+      <a [routerLink]="['/']" class="btn btn-secondary">
+        Volver
+      </a>
+    </div>
+  
+  </form>
 
-    <div style="margin-top: 15px;"></div>
-    <!-- Mostrar mensaje de éxito o error -->
-    <h4 *ngIf="loginCorrecto" style="color: green; text-align: center;">Acceso Autorizado</h4>
-    <h4 *ngIf="loginIncorrecto" style="color: red; text-align: center;">Usuario o Contraseña incorrectos</h4>
-    
+  <div style="margin-top: 15px;"></div>
+  <!-- Mostrar mensaje de éxito o error -->
+  <h4 *ngIf="loginCorrecto" style="color: green; text-align: center;">Acceso Autorizado</h4>
+  <h4 *ngIf="loginIncorrecto" style="color: red; text-align: center;">Usuario o Contraseña incorrectos</h4>
+  
 </div>
