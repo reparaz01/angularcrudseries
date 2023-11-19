@@ -1,0 +1,42 @@
+<div class="container py-4">
+    <h1 class="text-center fw-bold mb-4">Modificar Personaje</h1>
+
+    <div class="mb-3 text-center">
+        <label for="serie" class="form-label">Selecciona un Personaje</label>
+        <select
+          class="form-select input-narrow mx-auto"
+          id="personaje"
+          name="personaje" 
+          #cajaPersonaje
+        >
+          <option *ngFor="let personaje of personajes" [value]="personaje.idPersonaje">
+            {{ personaje.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3 text-center">
+        <label for="serie" class="form-label">Selecciona una Serie</label>
+        <select
+          class="form-select input-narrow mx-auto"
+          id="serie"
+          name="serie" 
+          #cajaSerie 
+        >
+          <option *ngFor="let serie of series" [value]="serie.idSerie">
+            {{ serie.nombre }}
+          </option>
+        </select>
+      </div>
+
+    <div class="text-center">
+      <br/>
+      <button (click)="modificarPersonajes()" class="btn btn-primary">
+        Guardar Cambios
+      </button>
+      &nbsp;
+      <a [routerLink]="['/']" class="btn btn-secondary">
+        Volver
+      </a>
+    </div>
+  </div>

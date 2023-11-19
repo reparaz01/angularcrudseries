@@ -1,0 +1,29 @@
+<div class="container py-4">
+    <h1 class="text-center fw-bold mb-4">Eliminar Personajes</h1>
+
+    <div class="mb-3 text-center">
+        <label for="serie" class="form-label">Selecciona un Personaje</label>
+        <select
+          class="form-select input-narrow mx-auto"
+          id="personaje"
+          name="personaje" 
+          #cajaId
+        >
+          <option *ngFor="let personaje of personajes" [value]="personaje.idPersonaje">
+            {{ personaje.nombre }}
+          </option>
+        </select>
+      </div>
+
+
+    <div class="text-center">
+      <br/>
+      <button (click)="crearPersonaje()" class="btn btn-primary">
+        Eliminar Personaje
+      </button>
+      &nbsp;
+      <a [routerLink]="['/']" class="btn btn-secondary">
+        Volver
+      </a>
+    </div>
+  </div>

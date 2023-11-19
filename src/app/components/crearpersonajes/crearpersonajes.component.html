@@ -1,0 +1,50 @@
+<!-- personaje.component.html -->
+<div class="container py-4">
+    <h1 class="text-center fw-bold mb-4">Crear Personaje</h1>
+    <form #insertForm="ngForm">
+      <div class="mb-3 text-center">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control input-narrow mx-auto"
+          id="nombre"
+          name="nombre" 
+          #cajaNombre 
+        />
+      </div>
+      <div class="mb-3 text-center">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input
+          type="text"
+          class="form-control input-narrow mx-auto"
+          id="imagen"
+          name="imagen" 
+          #cajaImagen 
+        />
+      </div>
+      <div class="mb-3 text-center">
+        <label for="serie" class="form-label">Serie</label>
+        <select
+          class="form-select input-narrow mx-auto"
+          id="serie"
+          name="serie" 
+          #cajaSerie 
+        >
+          <option *ngFor="let serie of series" [value]="serie.idSerie">
+            {{ serie.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="text-center">
+        <br />
+        <button (click)="crearPersonaje()" class="btn btn-primary">
+          Crear Personaje
+        </button>
+        &nbsp;
+        <a [routerLink]="['/']" class="btn btn-secondary">
+          Volver
+        </a>
+      </div>
+    </form>
+  </div>
+  

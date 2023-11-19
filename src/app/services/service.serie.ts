@@ -60,13 +60,11 @@ export class ServiceSeries {
   }
 
 
-  crearPersonajeSeguro(personaje: Personaje): Observable<any> {
-    const headers = {
-      Authorization: 'bearer ' + environment.token,
-    };
+  crearPersonaje(personaje: Personaje): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'bearer ' + environment.token);
     const request = 'api/personajes';
     const url = environment.urlApi + request;
-
+    console.log(personaje);
     return this._http.post(url, personaje, { headers });
   }
 
@@ -78,7 +76,7 @@ export class ServiceSeries {
     return this._http.get(url, { headers });
   }
 
-  updatePersonajeSeguro(idPersonaje: number, idSerie: number): Observable<any> {
+  updatePersonaje(idPersonaje: number, idSerie: number): Observable<any> {
     const headers = {
       Authorization: 'bearer ' + environment.token,
     };
@@ -88,7 +86,7 @@ export class ServiceSeries {
     return this._http.put(url, {}, { headers });
   }
 
-  deletePersonajeSeguro(id: number): Observable<any> {
+  deletePersonaje(id: number): Observable<any> {
     const headers = {
       Authorization: 'bearer ' + environment.token,
     };
